@@ -1,2 +1,2 @@
 # artificial-intelligence
-Topics covered include Fuzzy Logic.
+Topics covered include Fuzzy Logic and Case-based Reasoning.
