@@ -26,3 +26,18 @@ payment_after_discount = total_payment - total_discount
 print()
 print("Total payment                    : RM " + str(total_payment))
 print("Total payment (after discount)   : RM " + str(payment_after_discount))
+
+print(
+    """
+    Burger Pricelist:
+    1. Beef Burger RM15
+    2. Cheese Burger RM20
+    3. Kids Burger RM9
+    """
+)
+
+menu_price = input("Menu price: ")
+amount = input("Amount: ")
+bill = int(menu_price) * int(amount)
+
+print("You need to pay RM" + str(bill))
