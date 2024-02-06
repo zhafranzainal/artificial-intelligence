@@ -12,3 +12,10 @@ for score in students_score:
 
 print()
 print(students_grade)
+
+students_grade = ['A' if score >= 90 else
+                  'B' if score >= 70 else 'C'
+                  for score in students_score]
+
+print()
+print(students_grade)
