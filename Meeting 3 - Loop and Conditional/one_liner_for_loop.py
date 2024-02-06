@@ -6,3 +6,6 @@ for i in name:
 
 print()
 [print(i) for i in name]
+
+print()
+for i in name: print(i)
