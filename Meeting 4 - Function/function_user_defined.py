@@ -18,3 +18,6 @@ def order_pizza_dynamic(quantity):
 # Function calling
 order_pizza()
 order_pizza_dynamic(7)
+
+qty = input("\nWrite quantity: ")
+order_pizza_dynamic(int(qty))
