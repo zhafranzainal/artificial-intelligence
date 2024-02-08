@@ -29,6 +29,12 @@ congratulations_list = [
     "I’m so proud of you! 🥰"
 ]
 
+songs_list = [
+    "https://youtu.be/2fBxXBqRWSY",
+    "https://youtu.be/L3wKzyIN1yk",
+    "https://youtu.be/Slv3LFYYokQ"
+]
+
 
 @bot.event
 async def on_ready():
@@ -61,6 +67,10 @@ async def on_message(message):
 
     if any(word in message.content for word in happy_words):
         response = random.choice(congratulations_list)
+        await message.channel.send(response)
+
+    if message.content.lower().startswith("!random song"):
+        response = random.choice(songs_list)
         await message.channel.send(response)
 
 
