@@ -1,5 +1,6 @@
 import os
 import discord
+import random
 
 # create default set of intents then enable intent to receive message content
 permissions = discord.Intents.default()
@@ -7,6 +8,16 @@ permissions.message_content = True
 
 # create bot
 bot = discord.Client(intents=permissions)
+
+sad_words = ["sad", "depressed", "angry", "hurting", "stressed"]
+
+encouragements_list = [
+    "Cheer up! 🤗",
+    "Hang in there 😉",
+    "You are a great person!👍",
+    "Come on! You can do it! 💪",
+    "Stay strong 🥰"
+]
 
 
 @bot.event
@@ -33,6 +44,10 @@ async def on_message(message):
             "https://media.giphy.com/media/v1"
             ".Y2lkPTc5MGI3NjExdXA3eXB5djZiczV"
             "jeHV6MGpqMXJ0OGM0OTdudTdwOTV5ZTN6eDMyZCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Cmr1OMJ2FN0B2/giphy.gif")
+
+    if any(word in message.content for word in sad_words):
+        response = random.choice(encouragements_list)
+        await message.channel.send(response)
 
 
 # run bot using TOKEN from env
