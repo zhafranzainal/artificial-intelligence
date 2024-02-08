@@ -27,6 +27,12 @@ class Laptop:
         self.laptop_ram -= 1
         print("Remaining RAM    : " + str(self.laptop_ram) + "GB")
 
+    def editing_video(self):
+        print("\nLaptop used for editing video...")
+        print("RAM usage        : 3GB")
+        self.laptop_ram -= 3
+        print("Remaining RAM    : " + str(self.laptop_ram) + "GB")
+
 
 # objects
 laptop_1 = Laptop("Dell", 2021, "Grey", 8)
@@ -44,3 +50,4 @@ print(laptop_1.information())
 
 laptop_1.coding()
 laptop_1.office()
+laptop_1.editing_video()
