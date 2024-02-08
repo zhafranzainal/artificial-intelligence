@@ -1,5 +1,6 @@
 # class
 class Laptop:
+
     # constructor
     def __init__(self, brand, release_year, colour, ram):
         # properties
@@ -8,10 +9,23 @@ class Laptop:
         self.laptop_colour = colour
         self.laptop_ram = ram
 
-    # method
+    # methods
+
     def information(self):
         return f"{self.laptop_colour} {self.laptop_brand} laptop" \
                f" was released in {self.laptop_release_year} with {self.laptop_ram}GB of RAM"
+
+    def coding(self):
+        print("\nLaptop used for coding...")
+        print("RAM usage        : 2GB")
+        self.laptop_ram -= 2
+        print("Remaining RAM    : " + str(self.laptop_ram) + "GB")
+
+    def office(self):
+        print("\nLaptop used for office...")
+        print("RAM usage        : 1GB")
+        self.laptop_ram -= 1
+        print("Remaining RAM    : " + str(self.laptop_ram) + "GB")
 
 
 # objects
@@ -27,3 +41,6 @@ print(laptop_1.information)
 print()
 print(laptop_1.laptop_brand)
 print(laptop_1.information())
+
+laptop_1.coding()
+laptop_1.office()
