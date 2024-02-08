@@ -1,28 +1,28 @@
 import os
 import discord
 
-# get default set of intents then enable intent to receive message content
+# create default set of intents then enable intent to receive message content
 permissions = discord.Intents.default()
 permissions.message_content = True
 
-# represent bot
-client = discord.Client(intents=permissions)
+# create bot
+bot = discord.Client(intents=permissions)
 
 
-@client.event
+@bot.event
 async def on_ready():
-    print(f"Logged in as {client.user}")
+    print(f"Logged in as {bot.user}")
 
-    # send message to each server it belongs to
-    for guild in client.guilds:
+    # send message to each server the bot belongs to
+    for guild in bot.guilds:
         channel = guild.system_channel
-        await channel.send(f"{client.user} is online!")
+        await channel.send(f"{bot.user} is online!")
 
 
-@client.event
+@bot.event
 async def on_message(message):
-    # check if the message is from the bot itself
-    if message.author == client.user:
+    # skip messages from the bot itself
+    if message.author == bot.user:
         return
 
     if message.content.lower().startswith("!hi"):
@@ -35,5 +35,5 @@ async def on_message(message):
             "jeHV6MGpqMXJ0OGM0OTdudTdwOTV5ZTN6eDMyZCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Cmr1OMJ2FN0B2/giphy.gif")
 
 
-# Run bot using TOKEN from env
-client.run(os.environ['TOKEN'])
+# run bot using TOKEN from env
+bot.run(os.environ['TOKEN'])
