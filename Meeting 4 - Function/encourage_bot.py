@@ -19,6 +19,16 @@ encouragements_list = [
     "Stay strong 🥰"
 ]
 
+happy_words = ["happy", "glad", "joyful", "satisfied", "blessed"]
+
+congratulations_list = [
+    "There you go! 👏",
+    "Keep up the good work 👍",
+    "Keep it up 🙌",
+    "Good job 👍",
+    "I’m so proud of you! 🥰"
+]
+
 
 @bot.event
 async def on_ready():
@@ -47,6 +57,10 @@ async def on_message(message):
 
     if any(word in message.content for word in sad_words):
         response = random.choice(encouragements_list)
+        await message.channel.send(response)
+
+    if any(word in message.content for word in happy_words):
+        response = random.choice(congratulations_list)
         await message.channel.send(response)
 
 
