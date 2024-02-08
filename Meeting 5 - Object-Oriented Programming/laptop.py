@@ -8,6 +8,7 @@ class Laptop:
         self.laptop_colour = colour
         self.laptop_ram = ram
 
+    # method
     def information(self):
         return f"{self.laptop_colour} {self.laptop_brand} laptop" \
                f" was released in {self.laptop_release_year} with {self.laptop_ram}GB of RAM"
