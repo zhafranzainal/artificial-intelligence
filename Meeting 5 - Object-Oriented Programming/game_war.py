@@ -83,7 +83,7 @@ char2_attack = 0
 char2_score = 0
 roles = ["fighter", "tank", "mage"]
 
-while game_turn == 1:
+while game_turn != -1:
 
     player = None
     comp = None
