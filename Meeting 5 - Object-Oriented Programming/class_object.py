@@ -1,7 +1,7 @@
 # class
 class Laptop:
 
-    # constructor
+    # constructor for parent class
     def __init__(self, brand, release_year, colour, ram):
         # properties
         self.laptop_brand = brand
@@ -37,10 +37,13 @@ class Laptop:
 # inheritance (GamingLaptop inherits Laptop)
 class GamingLaptop(Laptop):
 
+    # constructor for child class
     def __init__(self, brand, release_year, colour, ram, vga):
+        # method to access parent constructor
         super().__init__(brand, release_year, colour, ram)
         self.laptop_vga = vga
 
+    # method
     def gaming(self):
         print("\nLaptop used for gaming...")
         print("Using", self.laptop_vga)
