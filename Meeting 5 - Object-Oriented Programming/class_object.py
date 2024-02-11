@@ -36,6 +36,7 @@ class Laptop:
 
 # inheritance (GamingLaptop inherits Laptop)
 class GamingLaptop(Laptop):
+    
     def __init__(self, brand, release_year, colour, ram, vga):
         super().__init__(brand, release_year, colour, ram)
         self.laptop_vga = vga
