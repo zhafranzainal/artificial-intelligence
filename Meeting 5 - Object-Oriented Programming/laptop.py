@@ -34,9 +34,22 @@ class Laptop:
         print("Remaining RAM    : " + str(self.laptop_ram) + "GB")
 
 
+class GamingLaptop(Laptop):
+    def __init__(self, brand, release_year, colour, ram, vga):
+        super().__init__(brand, release_year, colour, ram)
+        self.laptop_vga = vga
+
+    def gaming(self):
+        print("\nLaptop used for gaming...")
+        print("Using", self.laptop_vga)
+        print("RAM usage        : 10GB")
+        self.laptop_ram -= 10
+        print("Remaining RAM    : " + str(self.laptop_ram) + "GB")
+
+
 # objects
 laptop_1 = Laptop("Dell", 2021, "Grey", 8)
-laptop_2 = Laptop("Asus", 2022, "Black", 16)
+laptop_2 = GamingLaptop("Asus", 2022, "Black", 16, "RTX 1650")
 laptop_3 = Laptop("MacBook", 2022, "Silver", 8)
 
 print()
@@ -54,9 +67,8 @@ laptop_1.editing_video()
 
 print("\n=======================================================")
 print(laptop_2.information())
-laptop_2.coding()
 laptop_2.office()
-laptop_2.editing_video()
+laptop_2.gaming()
 
 print("\n==========================================================")
 print(laptop_3.information())
