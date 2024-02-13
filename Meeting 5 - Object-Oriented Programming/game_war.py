@@ -156,6 +156,7 @@ while play_again != -1:
     else:
         char2_score += 1
 
+    # Reset attack counts
     char1_attack = 0
     char2_attack = 0
 
