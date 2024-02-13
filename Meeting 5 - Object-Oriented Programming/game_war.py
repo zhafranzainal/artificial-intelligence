@@ -132,10 +132,13 @@ while play_again != -1:
     input("\nPress Enter to continue...")
     print()
 
+    # Simulate 100 rounds of combat between two characters
     for _ in range(100):
 
+        # Determine the winner of the current round
         winner = character_fight(char_1, char_2)
 
+        # Update the attack counts based on the winner
         if winner == char_1:
             char1_attack += 1
         else:
