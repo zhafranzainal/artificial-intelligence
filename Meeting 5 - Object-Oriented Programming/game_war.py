@@ -160,4 +160,8 @@ while play_again != -1:
     print(f"PLAYER      : {char1_score}")
     print(f"COMPUTER    : {char2_score}")
 
-    play_again = int(input("\nPress 1 to continue the game, or -1 to stop the game: "))
+    try:
+        play_again = int(input("\nPress 1 to continue the game, or -1 to stop the game: "))
+
+    except ValueError:
+        print("Game continues...")
