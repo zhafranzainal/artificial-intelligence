@@ -1,9 +1,11 @@
 import random
 
+# Define attributes for each character type
 FIGHTER = {"health": 3, "attack": 4, "dodge": 3}
 TANK = {"health": 4, "attack": 3, "dodge": 1}
 MAGE = {"health": 1, "attack": 5, "dodge": 4}
 
+# Create a dictionary to map character types to their attributes
 TYPES = {"fighter": FIGHTER, "tank": TANK, "mage": MAGE}
 
 
@@ -28,7 +30,7 @@ class Character:
     def attack_enemy(self):
         return self.attack
 
-    def dodge_success(self):
+    def is_dodging(self):
         dodge_chance = self.dodge * 5
         dodge_roll = random.randint(1, 100)
 
@@ -39,11 +41,13 @@ class Character:
 
     def take_damage(self, damage):
 
-        if self.dodge_success():
-            return "Missed"
+        if self.is_dodging():
+            print(f"{self.char_type} missed {damage} damage")
+            return
 
         self.health -= damage
-        return f"{self.char_type} took {damage} damage"
+        print(f"{self.char_type} took {damage} damage")
+        return
 
     def is_dead(self):
         return self.health <= 0
@@ -54,6 +58,7 @@ def character_fight(type_1, type_2):
     character_2 = Character(type_2)
     coin_toss = random.randint(0, 1)
 
+    # Determine the order of attack based on a coin toss
     if coin_toss == 0:
         first, second = [character_1, character_2]
     else:
@@ -70,26 +75,28 @@ def attack_character(first, second):
     damage = first.attack_enemy()
     second.take_damage(damage)
 
+    # Check if the second character is defeated
     if second.is_dead():
         return True
 
     return False
 
 
-game_turn = 1
+play_again = 1
 char1_attack = 0
 char1_score = 0
 char2_attack = 0
 char2_score = 0
 roles = ["fighter", "tank", "mage"]
 
-while game_turn != -1:
+while play_again != -1:
 
     player = None
-    comp = None
+    computer = None
 
     while player is None:
 
+        # Prompt the user to choose a character type
         player = int(
             input("\nAvailable Characters"
                   "\n1. Fighter"
@@ -103,19 +110,22 @@ while game_turn != -1:
             print("Invalid input")
             player = None
 
-    while comp is None:
+    while computer is None:
 
-        comp = random.randint(0, 2)
+        # Randomly select a character type for the computer
+        computer = random.randint(0, 2)
 
-        if comp == player - 1:
-            comp = None
+        # Retry if the computer chose the same character type as the player
+        if computer == player - 1:
+            computer = None
 
     char_1 = roles[player - 1]
-    char_2 = roles[comp]
+    char_2 = roles[computer]
 
     print("\nPlayer Choice    : " + char_1)
     print("Computer Choice  : " + char_2)
     input("\nPress Enter to continue...")
+    print()
 
     for _ in range(100):
 
@@ -145,4 +155,4 @@ while game_turn != -1:
     print(f"PLAYER      : {char1_score}")
     print(f"COMPUTER    : {char2_score}")
 
-    game_turn = int(input("\nPress 1 to continue the game, or -1 to stop the game: "))
+    play_again = int(input("\nPress 1 to continue the game, or -1 to stop the game: "))
