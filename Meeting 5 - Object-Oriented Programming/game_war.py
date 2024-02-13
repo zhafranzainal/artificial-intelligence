@@ -96,18 +96,23 @@ while play_again != -1:
 
     while player is None:
 
-        # Prompt the user to choose a character type
-        player = int(
-            input("\nAvailable Characters"
-                  "\n1. Fighter"
-                  "\n2. Tank"
-                  "\n3. Mage"
-                  "\n\nYour Choice: "
-                  )
-        )
+        try:
+            # Prompt the user to choose a character type
+            player = int(
+                input("\nAvailable Characters"
+                      "\n1. Fighter"
+                      "\n2. Tank"
+                      "\n3. Mage"
+                      "\n\nYour Choice: "
+                      )
+            )
 
-        if player > 3 or player < 1:
-            print("Invalid input")
+            if player > 3 or player < 1:
+                print("Invalid input")
+                player = None
+
+        except ValueError:
+            print("Empty input")
             player = None
 
     while computer is None:
