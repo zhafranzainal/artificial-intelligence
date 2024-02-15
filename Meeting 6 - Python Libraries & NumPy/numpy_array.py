@@ -12,10 +12,20 @@ array_2d = np.array([
     [11, 12, 13, 14, 15]
 ])
 
-print()
+# 3D array
+array_3d = np.array([
+    [[1, 2, 3], [4, 5, 6]],
+    [[7, 8, 9], [10, 11, 12]],
+    [[13, 14, 15], [16, 17, 18]]
+])
+
+print("\n1D array")
 print(a)
 print(b)
 print(c)
 
-print()
+print("\n2D array")
 print(array_2d)
+
+print("\n3D array\n")
+print(array_3d)
