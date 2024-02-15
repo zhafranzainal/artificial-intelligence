@@ -29,3 +29,12 @@ print(array_2d)
 
 print("\n3D array\n")
 print(array_3d)
+
+print("\nPrint 2D array")
+print(array_2d)
+
+print("\nSee shape of 2D array (Row vs Column)")
+print(array_2d.shape)
+
+print("\nAccess 2D array")
+print(array_2d[0, 3])
