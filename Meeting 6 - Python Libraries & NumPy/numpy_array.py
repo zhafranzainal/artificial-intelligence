@@ -36,5 +36,8 @@ print(array_2d)
 print("\nSee shape of 2D array (Row vs Column)")
 print(array_2d.shape)
 
-print("\nAccess 2D array")
+print("\nAccess 2D array (num 4)")
 print(array_2d[0, 3])
+
+print("\nAccess 2D array (num 7)")
+print(array_2d[1, 1])
