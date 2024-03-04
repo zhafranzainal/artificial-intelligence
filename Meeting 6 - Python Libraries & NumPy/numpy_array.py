@@ -36,8 +36,14 @@ print(array_2d)
 print("\nSee shape of 2D array (Row vs Column)")
 print(array_2d.shape)
 
-print("\nAccess 2D array (num 4)")
+print("\nAccess specific element in 2D array (num 4)")
 print(array_2d[0, 3])
 
-print("\nAccess 2D array (num 7)")
+print("\nAccess specific element in 2D array (num 7)")
 print(array_2d[1, 1])
+
+print("\nAccess elements in 2D array (row no 1)")
+print(array_2d[1, :])
+
+print("\nAccess elements in 2D array (column no 1)")
+print(array_2d[:, 1])
