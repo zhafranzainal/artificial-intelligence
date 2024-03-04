@@ -35,30 +35,3 @@ print(array_2d)
 
 print("\nSee shape of 2D array (Row vs Column)")
 print(array_2d.shape)
-
-print("\nAccess specific element in 2D array (num 4)")
-print(array_2d[0, 3])
-
-print("\nAccess specific element in 2D array (num 7)")
-print(array_2d[1, 1])
-
-print("\nAccess elements in 2D array (row no 1)")
-print(array_2d[1, :])
-
-print("\nAccess elements in 2D array (column no 1)")
-print(array_2d[:, 1])
-
-print("\nSlice array for column 1 until 2")
-print(array_2d[:, 1:3])
-
-print("\nSlice array for row 1, column 1 until 3")
-print(array_2d[1, 1:4])
-
-print("\nSlice array for row 0 until 1, column 1 until 3")
-print(array_2d[:2, 1:4])
-
-print("\nAccess elements in diagonal form (column 2)")
-print(array_2d.diagonal(2))
-
-print("\nAccess elements in diagonal form (column 4)")
-print(array_2d.diagonal(4))
