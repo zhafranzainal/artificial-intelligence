@@ -56,3 +56,9 @@ print(array_2d[1, 1:4])
 
 print("\nSlice array for row 0 until 1, column 1 until 3")
 print(array_2d[:2, 1:4])
+
+print("\nAccess elements in diagonal form (column 2)")
+print(array_2d.diagonal(2))
+
+print("\nAccess elements in diagonal form (column 4)")
+print(array_2d.diagonal(4))
