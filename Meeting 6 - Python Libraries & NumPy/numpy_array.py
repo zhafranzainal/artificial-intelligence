@@ -47,3 +47,12 @@ print(array_2d[1, :])
 
 print("\nAccess elements in 2D array (column no 1)")
 print(array_2d[:, 1])
+
+print("\nSlice array for column 1 until 2")
+print(array_2d[:, 1:3])
+
+print("\nSlice array for row 1, column 1 until 3")
+print(array_2d[1, 1:4])
+
+print("\nSlice array for row 0 until 1, column 1 until 3")
+print(array_2d[:2, 1:4])
