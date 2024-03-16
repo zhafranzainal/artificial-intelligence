@@ -12,10 +12,16 @@ mask = np.zeros(img.shape[:2], dtype="uint8")
 # Draw a white filled circle on the mask
 cv2.circle(mask, (160, 200), 165, 255, -1)
 
-# Apply various bitwise operations on the image using the mask
+# Bitwise AND operation: Keeps the pixels where both the image and mask have non-zero values.
 img_and = cv2.bitwise_and(img, img, mask=mask)
+
+# Bitwise OR operation: Keeps the pixels where either the image or mask have non-zero values.
 img_or = cv2.bitwise_or(img, img, mask=mask)
+
+# Bitwise NOT operation: Inverts the pixels of the image where the mask is non-zero.
 img_not = cv2.bitwise_not(img, img, mask=mask)
+
+# Bitwise XOR operation: Keeps the pixels where the image and mask have different values.
 img_xor = cv2.bitwise_xor(img, img, mask=mask)
 
 cv2.imshow("Mask", mask)
