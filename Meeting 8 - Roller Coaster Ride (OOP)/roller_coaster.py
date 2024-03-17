@@ -1,6 +1,6 @@
 class Person:
 
-    # constructor for parent class
+    # constructor
     def __init__(self, name, age, height):
         self.name = name
         self.age = age
