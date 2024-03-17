@@ -40,5 +40,5 @@ while True:
 
     answer = input("\nPress 'y' to continue / 'n' to quit: ")
 
-    if answer == 'n':
+    if answer.lower() == 'n':
         break
