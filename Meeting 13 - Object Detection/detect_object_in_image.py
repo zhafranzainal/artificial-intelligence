@@ -53,7 +53,7 @@ for i in range(detected_objects.shape[2]):
 
         (startX, startY, endX, endY) = box.astype('int')
 
-        # Change the position of the text confidence value by 10px down if the text passes through the image area
+        # Change the position of the text confidence value by 15px down if the text passes through the image area
         y = startY - 15 if startY > 30 else startY + 15
 
         cv2.rectangle(
