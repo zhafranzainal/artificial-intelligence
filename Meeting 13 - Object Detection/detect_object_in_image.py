@@ -10,6 +10,8 @@ classes = [
     'diningtable', 'dog', 'horse', 'motorbike', 'person', 'pottedplant', 'sheep', 'sofa', 'train', 'tvmonitor'
 ]
 
+colors = np.random.uniform(0, 255, size=(len(classes), 3))
+
 # Parameter 1: Prototxt file which is the structure of the neural network graph model that will be used later
 # Parameter 2: .caffemodel file which is a pre-trained Caffe model file for object detection
 net = cv2.dnn.readNetFromCaffe(
@@ -60,7 +62,7 @@ for i in range(detected_objects.shape[2]):
             image,
             (startX, startY),
             (endX, endY),
-            (0, 0, 255),
+            colors[class_id],
             2
         )
 
@@ -71,7 +73,7 @@ for i in range(detected_objects.shape[2]):
             (startX, y),
             cv2.FONT_HERSHEY_SIMPLEX,
             0.5,
-            (0, 0, 255),
+            colors[class_id],
             2
         )
 
