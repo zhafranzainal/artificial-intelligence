@@ -45,6 +45,8 @@ class EuclideanDistTracker:
                 new_center_points[object_id] = center
 
             self.center_points = new_center_points.copy()
+
+            print(self.center_points)
             return objects_bbs_ids
 
         return objects_bbs_ids
