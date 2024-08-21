@@ -32,7 +32,7 @@ for contour in contours:
 
     approx = cv2.approxPolyDP(contour, 10, True)
 
-    # assuming number plate has a rectangle shape
+    # Assuming number plate has a rectangle shape
     if len(approx) == 4:
         location = approx
         break
