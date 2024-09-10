@@ -32,6 +32,11 @@ while True:
     landmarkList = detector.find_position(frame, draw=True)
     print(landmarkList)
 
+    if len(landmarkList) != 0:
+        x1, y1 = landmarkList[8][1:]
+        x2, y2 = landmarkList[12][1:]
+        print(x1, y1, x2, y2)
+
     frame[0: 125, 0:1280] = header
 
     cv2.imshow("Frame", frame)
