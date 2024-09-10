@@ -1,5 +1,6 @@
 import cv2
 import os
+import numpy as np
 import HandTrackingModule as Htm
 
 detector = Htm.HandDetector(detection_confidence=0.85)
@@ -22,6 +23,15 @@ for imPath in myListDirectory:
 
 header = overlayList[0]
 
+# default brush color is red
+drawColor = (0, 0, 255)
+brushThickness = 7
+eraserThickness = 40
+
+# brush start coordinates
+xp, yp = 0, 0
+imgCanvas = np.zeros((720, 1280, 3), np.uint8)
+
 while True:
 
     res, frame = cap.read()
@@ -39,6 +49,30 @@ while True:
 
         fingers = detector.fingers_up()
         print(fingers)
+
+        # if index and middle finger are lifted
+        if fingers[1] and fingers[2]:
+
+            xp, yp = 0, 0
+            print("Selection mode")
+
+            # draw rectangle
+            cv2.rectangle(frame, (x1, y1 - 25), (x2, y2 + 25), drawColor, cv2.FILLED)
+
+            if y1 < 125:
+                if 320 < x1 < 480:
+                    header = overlayList[0]
+                    drawColor = (0, 0, 255)
+                elif 480 < x1 < 630:
+                    header = overlayList[1]
+                    drawColor = (0, 255, 0)
+                elif 630 < x1 < 840:
+                    header = overlayList[2]
+                    drawColor = (255, 0, 0)
+                elif x1 > 1000:
+                    header = overlayList[3]
+                    # black color as the eraser mode
+                    drawColor = (0, 0, 0)
 
     frame[0: 125, 0:1280] = header
 
