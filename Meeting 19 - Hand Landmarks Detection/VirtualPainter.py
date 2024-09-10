@@ -74,7 +74,7 @@ while True:
                     # black color as the eraser mode
                     drawColor = (0, 0, 0)
 
-        if fingers[1] and fingers[2] is False:
+        if fingers[1] and fingers[2] == False:
 
             print("Drawing Mode")
 
@@ -95,6 +95,13 @@ while True:
                 cv2.line(imgCanvas, (xp, yp), (x1, y1), drawColor, brushThickness)
 
             xp, yp = x1, y1
+
+    # persist drawn image in video frame
+    frameGray = cv2.cvtColor(imgCanvas, cv2.COLOR_BGR2GRAY)
+    _, frameInverse = cv2.threshold(frameGray, 50, 255, cv2.THRESH_BINARY_INV)
+    frameInverse = cv2.cvtColor(frameInverse, cv2.COLOR_GRAY2BGR)
+    frame = cv2.bitwise_and(frame, frameInverse)
+    frame = cv2.bitwise_or(frame, imgCanvas)
 
     frame[0: 125, 0:1280] = header
 
