@@ -37,6 +37,9 @@ while True:
         x2, y2 = landmarkList[12][1:]
         print(x1, y1, x2, y2)
 
+        fingers = detector.fingers_up()
+        print(fingers)
+
     frame[0: 125, 0:1280] = header
 
     cv2.imshow("Frame", frame)
