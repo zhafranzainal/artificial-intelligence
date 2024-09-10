@@ -29,6 +29,8 @@ while True:
     # flip frames horizontally
     frame = cv2.flip(frame, 1)
     frame = detector.find_hands(frame)
+    landmarkList = detector.find_position(frame, draw=True)
+    print(landmarkList)
 
     frame[0: 125, 0:1280] = header
 
