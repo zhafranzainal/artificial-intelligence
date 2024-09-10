@@ -74,7 +74,7 @@ while True:
                     # black color as the eraser mode
                     drawColor = (0, 0, 0)
 
-        if fingers[1] and fingers[2] == False:
+        if not (fingers[1] and fingers[2]):
 
             print("Drawing Mode")
 
