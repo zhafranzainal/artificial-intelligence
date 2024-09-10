@@ -56,7 +56,7 @@ while True:
             xp, yp = 0, 0
             print("Selection mode")
 
-            # draw rectangle
+            # draw rectangle indicating selection mode
             cv2.rectangle(frame, (x1, y1 - 25), (x2, y2 + 25), drawColor, cv2.FILLED)
 
             if y1 < 125:
@@ -74,9 +74,32 @@ while True:
                     # black color as the eraser mode
                     drawColor = (0, 0, 0)
 
+        if fingers[1] and fingers[2] is False:
+
+            print("Drawing Mode")
+
+            # draw circle indicating drawing mode
+            cv2.circle(frame, (x1, y1), 15, drawColor, cv2.FILLED)
+
+            # if brush coordinate still at initial coordinate, overwrite with tip index finger nodes landmark location
+            if xp == 0 and yp == 0:
+                xp, yp = x1, y1
+
+            # if choose eraser mode
+            if drawColor == (0, 0, 0):
+                cv2.line(frame, (xp, yp), (x1, y1), drawColor, eraserThickness)
+                cv2.line(imgCanvas, (xp, yp), (x1, y1), drawColor, eraserThickness)
+            # else choose brush colour
+            else:
+                cv2.line(frame, (xp, yp), (x1, y1), drawColor, brushThickness)
+                cv2.line(imgCanvas, (xp, yp), (x1, y1), drawColor, brushThickness)
+
+            xp, yp = x1, y1
+
     frame[0: 125, 0:1280] = header
 
     cv2.imshow("Frame", frame)
+    cv2.imshow("Canvas", imgCanvas)
 
     if cv2.waitKey(10) & 0xFF == ord('q'):
         break
