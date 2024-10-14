@@ -17,9 +17,15 @@ while True:
     ret, smoke_frame = smoke_animation.read()
 
     smoke_frame_counter += 1
+
+    # Reset frames to 0 once finished to keep looping animation
+    if smoke_frame_counter == smoke_animation.get(cv2.CAP_PROP_FRAME_COUNT):
+        smoke_animation.set(cv2.CAP_PROP_POS_FRAMES, 0)
+        smoke_frame_counter = 0
+
     frame = cv2.flip(frame, 1)
 
-    cv2.imshow('Frame', frame)
+    cv2.imshow('Frame', smoke_frame)
 
     if cv2.waitKey(10) & 0xFF == ord('q'):
         break
