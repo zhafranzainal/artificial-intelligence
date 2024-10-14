@@ -1,4 +1,7 @@
 import cv2
+import FaceMeshDetector as faceMd
+
+detector = faceMd.FaceMesh()
 
 cap = cv2.VideoCapture(0)
 
@@ -25,7 +28,9 @@ while True:
 
     frame = cv2.flip(frame, 1)
 
-    cv2.imshow('Frame', smoke_frame)
+    frame_face_mesh, face_mesh_results = detector.detect_facial_landmarks(frame, detector.faceMeshVideos)
+
+    cv2.imshow('Frame', frame_face_mesh)
 
     if cv2.waitKey(10) & 0xFF == ord('q'):
         break
