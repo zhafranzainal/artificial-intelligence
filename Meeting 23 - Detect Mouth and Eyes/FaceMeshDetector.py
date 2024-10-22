@@ -140,8 +140,8 @@ class FaceMesh:
             else:
                 location = (int(center[0] - filter_img_width / 2), int(center[1] - filter_img_height / 2))
 
-            ROI = image[location[1]: location[1] + filter_img_height, location[0]: location[0] + filter_img_width]
-            resultant_image = cv2.bitwise_and(ROI, ROI, mask=filter_img_mask)
+            roi = image[location[1]: location[1] + filter_img_height, location[0]: location[0] + filter_img_width]
+            resultant_image = cv2.bitwise_and(roi, roi, mask=filter_img_mask)
             resultant_image = cv2.add(resultant_image, resized_filter_img)
 
             annotated_image[
