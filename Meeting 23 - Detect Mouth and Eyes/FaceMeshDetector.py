@@ -119,7 +119,7 @@ class FaceMesh:
             filter_img_height, filter_img_width, _ = filter_img.shape
             _, face_part_height, landmarks = self.get_size(image, face_landmarks, indexes)
             required_height = int(face_part_height * 2.5)
-            
+
             resized_filter_img = cv2.resize(
                 filter_img,
                 (int(filter_img_width * (required_height / filter_img_height)), required_height)
