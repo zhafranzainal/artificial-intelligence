@@ -31,7 +31,7 @@ while True:
 
             for lm_id, lm in enumerate(face_landmarks.landmark):
 
-                h, w, c = rgb.sqhape
+                h, w, c = rgb.shape
                 x, y = int(lm.x * w), int(lm.y * h)
 
                 # landmark id for left mouth
