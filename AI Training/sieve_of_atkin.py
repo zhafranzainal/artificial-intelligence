@@ -8,7 +8,7 @@ def sieve(limit):
     if limit == 3:
         return [False, True, True]
 
-    res = [False]
+    res = [False] * (limit + 1)
 
     if limit >= 2:
         res[2] = True
@@ -57,7 +57,7 @@ def sieve(limit):
 
         r += 1
 
-    return res
+    return [index for index, is_prime in enumerate(res) if is_prime]
 
 
 def pick_prime(primes, min_size=1000):
