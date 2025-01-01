@@ -53,7 +53,7 @@ def draw_status():
     font = pg.font.Font(None, 30)
     text = font.render(message, 1, (255, 255, 255))
     screen.fill((0, 0, 0), (0, 400, 475, 100))
-    text_rect = text.get_rect(center=(WIDTH / 2, HEIGHT / 2))
+    text_rect = text.get_rect(center=(WIDTH / 2, HEIGHT + 50))
     screen.blit(text, text_rect)
     pg.display.update()
 
@@ -178,7 +178,7 @@ def reset_game():
 
     global grid, current_winner, current_player, is_draw
 
-    time.sleep(3)
+    time.sleep(10)
     current_player = 'x'
     is_draw = False
     game_initiating_window()
