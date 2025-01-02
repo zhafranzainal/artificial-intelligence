@@ -71,7 +71,7 @@ def update_user(user_id, data):
     Raises:
         ValueError: If the user does not exist.
     """
-    user = get_user_by_id(user_id)
+    user = get_user_by_id(user_id - 1)
 
     user.update(data)
     return user
