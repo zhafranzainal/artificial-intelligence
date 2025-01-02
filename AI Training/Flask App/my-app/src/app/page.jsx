@@ -74,7 +74,7 @@ const ProfilePage = () => {
 
   const handleUserIdChange = (e) => {
     setDisplayId(Number(e.target.value))
-    setUserId(Number(e.target.value)-1);
+    setUserId(Number(e.target.value) - 1);
     setIsEditing(false); // Exit edit mode if a different user is selected
   };
 
