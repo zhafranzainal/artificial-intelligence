@@ -33,7 +33,7 @@ def api_update_user(user_id):
     Updates an existing user's details.
     """
     data = request.get_json()
-    if data is not None:
+    if data is None:
         return jsonify({'error': 'No data provided for update.'}), 400
 
     try:
