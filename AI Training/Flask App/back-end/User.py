@@ -1,5 +1,6 @@
 from dataclasses import dataclass, asdict
 
+
 @dataclass
 class User:
     id: int
@@ -12,8 +13,10 @@ class User:
         self.email = data.get('email', self.email)
         self.bio = data.get('bio', self.bio)
 
+
 # Mock database represented as a dictionary
 users_db = dict()
+
 
 # CRUD Functions
 
@@ -40,6 +43,7 @@ def create_user(id, name, email, bio):
     users_db[id] = user
     return user
 
+
 def get_user_by_id(user_id):
     """
     Retrieves a user by their ID.
@@ -51,6 +55,7 @@ def get_user_by_id(user_id):
         User or None: The User instance if found, else None.
     """
     return users_db.get(user_id)
+
 
 def update_user(user_id, data):
     """
@@ -71,6 +76,7 @@ def update_user(user_id, data):
     user.update(data)
     return user
 
+
 def list_users():
     """
     Lists all users in the mock database.
@@ -79,6 +85,7 @@ def list_users():
         list: A list of User instances.
     """
     return list(users_db.values())
+
 
 # Utility Functions
 
