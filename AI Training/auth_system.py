@@ -1,6 +1,3 @@
-import pandas as pd
-
-
 class User:
 
     def __init__(self, user_id, username, password, failed_attempts=0, is_locked=False):
@@ -25,60 +22,54 @@ class User:
         self.is_locked = True
         print(f"Account for {self.username} has been locked due to too many failed login attempts.\n")
 
+    def validate_password(self, password):
+        return self.password == password
+
 
 class AuthenticationSystem:
 
     def __init__(self):
-        self.users = pd.DataFrame(columns=["user_id", "username", "password", "current_failed_attempts", "is_locked"])
+        self.users = {}
 
     def register_user(self, user_id, username, password):
 
-        new_user = User(user_id, username, password)
-
-        self.users = pd.concat([self.users, pd.DataFrame({
-            "user_id": [user_id],
-            "username": [username],
-            "password": [password],
-            "current_failed_attempts": [0],
-            "is_locked": [False]
-        })], ignore_index=True)
-
-        print(f"User {username} registered successfully.\n")
-
-    # Never alter this login function
-    def login(self, username, password):
-
-        user_row = self.users[self.users['username'] == username]
-
-        if user_row.empty:
-            print(f"User {username} not found.\n")
+        if username in self.users:
+            print(f"Username {username} is already taken.")
             return
 
-        user = User(
-            user_row['user_id'].values[0],
-            user_row['username'].values[0],
-            user_row['password'].values[0],
-            user_row['current_failed_attempts'].values[0],
-            user_row['is_locked'].values[0]
-        )
+        new_user = User(user_id, username, password)
+        self.users[username] = new_user
+        print(f"User {username} registered successfully.\n")
+
+    def login(self, username, password):
+
+        user = self.users.get(username)
+
+        if not user:
+            print(f"User {username} not found.\n")
+            return
 
         if user.is_locked:
             print(f"Account for {username} is locked. Please contact support.")
             return
 
-        if user.password == password:
+        if user.validate_password(password):
             user.reset_failed_attempts()
-            self.update_user(user)
+            auth_system.update_user_status(username, user.failed_attempts, user.is_locked)
             print(f"User {username} logged in successfully.\n")
         else:
             user.increment_failed_attempts()
-            self.update_user(user)
+            auth_system.update_user_status(username, user.failed_attempts, user.is_locked)
             print(f"Incorrect password for {username}.\n")
 
-    def update_user(self, user):
-        self.users.loc[self.users['username'] == user.username, 'current_failed_attempts'] = user.failed_attempts
-        self.users.loc[self.users['username'] == user.username, 'is_locked'] = user.is_locked
-        print(f"User {user.username}'s data updated.")
+    def update_user_status(self, username, failed_attempts, is_locked):
+
+        user = self.users.get(username)
+
+        if user:
+            user.failed_attempts = failed_attempts
+            user.is_locked = is_locked
+            print(f"User {user.username}'s data updated.")
 
 
 print()
@@ -88,7 +79,7 @@ auth_system.register_user(1, "neena", "password123")
 auth_system.register_user(2, "helios", "mysecurepassword")
 
 auth_system.login("neena", "password321")
-auth_system.login("Neena", "password123")
+auth_system.login("neena", "password111")
 auth_system.login("neena", "password123")
 auth_system.login("helios", "password321")
 auth_system.login("helios", "mysecurepassword")
