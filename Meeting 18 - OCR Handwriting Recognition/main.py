@@ -45,9 +45,9 @@ for contour in contours:
         dY = int(max(0, 32 - threshHeight) / 2.0)
 
         # add border
-        padded = cv2.copyMakeBorder(thresh, top=dY, bottom=dY, left=dX, right=dX,
-                                    borderType=cv2.BORDER_CONSTANT, value=(0, 0, 0)
-                                    )
+        padded = cv2.copyMakeBorder(
+            thresh, top=dY, bottom=dY, left=dX, right=dX, borderType=cv2.BORDER_CONSTANT, value=(0, 0, 0)
+        )
 
         # add padding
         padded = cv2.resize(padded, (32, 32))
