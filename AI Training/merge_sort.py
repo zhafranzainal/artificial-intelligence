@@ -17,21 +17,21 @@ def merge_sort(array):
 
 def merge(left, right):
     result = []
-    left_idx = 0
-    right_idx = 0
+    left_index = 0
+    right_index = 0
 
     # Merge two sorted arrays
-    while left_idx < len(left) and right_idx < len(right):
-        if left[left_idx] <= right[right_idx]:
-            result.append(left[left_idx])
-            left_idx += 1
+    while left_index < len(left) and right_index < len(right):
+        if left[left_index] <= right[right_index]:
+            result.append(left[left_index])
+            left_index += 1
         else:
-            result.append(right[right_idx])
-            right_idx += 1
+            result.append(right[right_index])
+            right_index += 1
 
     # Append remaining elements
-    result.extend(left[left_idx:])
-    result.extend(right[right_idx:])
+    result.extend(left[left_index:])
+    result.extend(right[right_index:])
 
     return result
 
