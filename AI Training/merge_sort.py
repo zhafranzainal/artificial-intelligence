@@ -37,6 +37,6 @@ def merge(left, right):
 
 
 # Example usage:
-arr = [3, 6, 8, 10, 1, 2, 1]
-sorted_arr = merge_sort(arr)
-print(sorted_arr)
+unsorted_array = [5, 2, 4, 6, 1, 3]
+sorted_array = merge_sort(unsorted_array)
+print(sorted_array)  # Output: [1, 2, 3, 4, 5, 6]
